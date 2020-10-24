@@ -1,6 +1,12 @@
 //----------------------------changeCase----------------------------------------
 
-const changeCase = (string) => string.toUpperCase();
+const changeCase = (string) =>
+  string
+    .split("")
+    .map((el) =>
+      el.toUpperCase() !== el ? el.toUpperCase() : el.toLowerCase()
+    )
+    .join("");
 
 console.log("1 - changeCase");
 console.log(changeCase("21century"));
