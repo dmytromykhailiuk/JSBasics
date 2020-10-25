@@ -57,6 +57,14 @@ console.log(isPalindrome("madam"));
 console.log(isPalindrome("fox"));
 console.log();
 
+const isPalindrome2 = (string) =>
+  string.split("").reverse().join("") === string;
+
+console.log("4 - isPalindrome2");
+console.log(isPalindrome2("madam"));
+console.log(isPalindrome2("fox"));
+console.log();
+
 //-----------------------------factorial----------------------------------------
 
 const factorial = (number) =>
