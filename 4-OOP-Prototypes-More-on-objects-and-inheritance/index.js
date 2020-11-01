@@ -129,12 +129,9 @@ class BookList {
     this.currentBook.markAsRead();
     this.lastBook = this.currentBook;
     this.currentBook = this.nextBook;
-    this.nextBook = this.#setNextBook();
-  }
 
-  #setNextBook() {
     const prevBookIdx = this.books.indexOf(this.lastBook);
-    return this.books[prevBookIdx + 2] || null;
+    this.nextBook = this.books[prevBookIdx + 2] || null;
   }
 }
 
