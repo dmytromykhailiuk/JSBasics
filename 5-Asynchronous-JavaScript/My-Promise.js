@@ -151,10 +151,10 @@ const getPromise = (data, seconds = 0) =>
   });
 
 getPromise("some data", 2)
-  .then((course) => course.toUpperCase())
-  .then((title) => console.log("w", title))
+  .then((data) => data.toUpperCase())
+  .then((data) => console.log("w", data))
   .catch((err) => console.log(err))
-  .then((title) => console.log("MY Promise:", title));
+  .then(() => console.log("Last then"));
 
 MyPromise.allSettled([
   getPromise("some data", 4),
