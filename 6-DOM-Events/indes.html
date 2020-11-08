@@ -16,35 +16,35 @@
   </section>
   <section>
     <h2>Searching by word in text</h2>
-    <div>
-      <div>
-        <input type="text" id="search-field">
-        <textarea id="textarea-field" cols="30" rows="10"></textarea>
+    <div class="searching-by-word__block">
+      <div class="searching-by-word__inputs">
+        <input type="text" id="search-field" placeholder="Search">
+        <textarea id="textarea-field" cols="30" rows="10" placeholder="Enter text..."></textarea>
       </div>
-      <p id="content-field"></p>
+      <p id="content-field" class="searching-by-word__text"></p>
     </div>
   </section>
   <section>
     <h2>Images-slider</h2>
-    <div>
-      <div>
+    <div class="images-slider__header">
+      <div class="images-slider__input">
         <input type="text" placeholder="Image URL" id="add-image-field">
         <button id="add-image-btn">Add</button>
       </div>
-      <div>
+      <div class="images-slider__timer-block">
         <p>Timer (sec):</p>
-        <div>
-          <div id="timer-value">
+        <div class="images-slider__timer-controller">
+          <div id="timer-value" class="images-slider__timer-value">
             3
           </div>
-          <div>
+          <div class="images-slider__timer-buttons">
             <div id="time-up">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 12 12">
                 <g id="up"><path id="arrow" d="M1 8h10L6 3 1 8"/></g>
               </svg>
             </div>
             <div id="time-down">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20">
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 20 20">
                 <title>down triangle</title>
                 <path d="M10 15L2 5h16l-8 10z"/>
               </svg>
@@ -53,8 +53,8 @@
         </div>
       </div>
     </div>
-    <div>
-      <div>
+    <div class="images-slider__content">
+      <div class="images-slider__arrow-left">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" class="change-image-arrow" id="next-image-left">
           <defs>
             <style>
@@ -74,8 +74,8 @@
           </g>
         </svg>
       </div>
-      <img src="https://www.beth-israel.org/wp-content/themes/Astoundz/images/placeholder.png" alt="" id="image-screen" height="300px" width="300px">
-      <div>
+      <img src="https://www.beth-israel.org/wp-content/themes/Astoundz/images/placeholder.png" alt="" id="image-screen">
+      <div class="images-slider__arrow-right">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" class="change-image-arrow" id="next-image-right">
           <defs>
             <style>
@@ -102,8 +102,8 @@
     <table style="width:100%" border="1px" id="table">
       <thead>
         <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
+          <th>Name</th>
+          <th colspan="2">Surname</th>
         </tr>
         <tbody id="table-body"></tbody>
       </thead>

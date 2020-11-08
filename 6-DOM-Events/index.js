@@ -211,49 +211,48 @@ const deleteIcon = `<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="h
 </g>
 </svg>`;
 
-let lastId = 2;
+let lastId = 0;
 let currentFieldInEditMode = null;
 
 let tableData = [];
 
-const createRow = (firstname, lastname, id) => {
-  if (!id) {
-    ++lastId;
-  }
+const createRow = (firstname, lastname) => {
+  ++lastId;
   const tr = document.createElement("tr");
-  tr.id = `row-${id || lastId}`;
+  tr.id = `row-${lastId}`;
   tr.innerHTML = `
     <td 
       class="row-field" 
-      id=row-firstname-${id || lastId}>${firstname || "Firstname"}
+      id=row-firstname-${lastId}>${firstname || ""}
     </td>
     <td 
-      class="row-field" 
-      id=row-lastname-${id || lastId}>${lastname || "Lastname"}</td>
+      class="row-field second" 
+      id=row-lastname-${lastId}>${lastname || ""}</td>
     <td 
-      class="delete-row-button" 
-      id=row-delete-button-${id || lastId}>${deleteIcon}
+      width="40px"
+      class="delete-row-button"
+      id=row-delete-button-${lastId}>${deleteIcon}
     </td>`;
   return tr;
 };
 
-const createRowObject = (firstname, lastname, id) => {
+const createRowObject = (firstname, lastname) => {
   return {
-    id: id || lastId,
-    node: document.getElementById(`row-${id || lastId}`),
+    id: lastId,
+    node: document.getElementById(`row-${lastId}`),
     firstname: {
-      value: firstname || "Firstname",
+      value: firstname || "",
       isEditMode: false,
       input: null,
-      node: document.getElementById(`row-firstname-${id || lastId}`),
+      node: document.getElementById(`row-firstname-${lastId}`),
     },
     lastname: {
-      value: lastname || "Lastname",
+      value: lastname || "",
       isEditMode: false,
       input: null,
-      node: document.getElementById(`row-lastname-${id || lastId}`),
+      node: document.getElementById(`row-lastname-${lastId}`),
     },
-    deleteButton: document.getElementById(`row-delete-button-${id || lastId}`),
+    deleteButton: document.getElementById(`row-delete-button-${lastId}`),
   };
 };
 
@@ -273,10 +272,10 @@ const closeEditMode = ({ saveValue } = {}) => {
   }
 };
 
-const addRowToTable = (firstname, lastname, id) => {
+const addRowToTable = (firstname, lastname) => {
   closeEditMode();
-  table.append(createRow(firstname, lastname, id));
-  const rowObject = createRowObject(firstname, lastname, id);
+  table.append(createRow(firstname, lastname));
+  const rowObject = createRowObject(firstname, lastname);
   tableData = [...tableData, rowObject];
 };
 
@@ -311,7 +310,7 @@ const startEditField = (index, fieldType) => {
   if (!currentRow.isEditMode) {
     closeEditMode();
     currentRow.isEditMode = true;
-    currentRow.node.innerHTML = `<input value="${currentRow.value}"/>`;
+    currentRow.node.innerHTML = `<input placeholder="Enter text..."/>`;
     currentRow.input = currentRow.node.firstElementChild;
     currentRow.input.focus();
     currentFieldInEditMode = { index, fieldType };
@@ -340,5 +339,5 @@ table.onkeyup = (e) => {
   }
 };
 
-addRowToTable("Jill", "Smith", 1);
-addRowToTable("Michael", "Jackson", 2);
+addRowToTable("Jill", "Smith");
+addRowToTable("Michael", "Jackson");
