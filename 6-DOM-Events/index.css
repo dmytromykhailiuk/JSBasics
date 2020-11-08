@@ -1,0 +1,8 @@
+body {
+  margin: 50px;
+}
+
+.change-image-arrow {
+  width: 50px;
+  cursor: pointer;
+}
