@@ -112,7 +112,7 @@ const helper = (generator) => {
         .then((value) => {
           recursiveFn(value);
         })
-        .catch((err) => console.error("error happened", err));
+        .catch((err) => generatorObj.throw(err));
     }
   };
   recursiveFn();

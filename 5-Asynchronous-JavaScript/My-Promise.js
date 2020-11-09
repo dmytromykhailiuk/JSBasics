@@ -111,7 +111,7 @@ class MyPromise {
           }
         }
         if (obj.type === "finally") {
-          data = obj.handler(data);
+          obj.handler();
         }
       } catch (err) {
         hasError = true;
