@@ -1,0 +1,100 @@
+$main-color: rgb(52, 157, 255);
+$light-color: white;
+$dark-color: rgb(49, 49, 49);
+
+body, h1 {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  height: 70px;
+  background-color: $main-color;
+
+  &__wrapper {
+    height: 70px;
+    margin: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__title {
+    color: $light-color;
+    font-weight: 400;
+  }
+
+  &__searching-block {
+    padding-bottom: 3px;
+    border-bottom: 1px solid $light-color;
+    padding-right: 10px;
+  }
+
+  &__searching-icon {
+    fill: $light-color;
+  }
+  
+  &__searching-input {
+    background-color: $main-color;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: $light-color;
+  }
+
+  ::-webkit-input-placeholder {
+    color: $light-color;
+  }
+  :-moz-placeholder {
+    color: $light-color;
+  }
+  ::-moz-placeholder {
+    color: $light-color;
+  }
+  :-ms-input-placeholder {
+    color: $light-color;
+  }
+}
+
+.aplication__body {
+  margin: 60px 10% 0 10%;
+}
+
+.create-task-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 25px;
+
+  &__input {
+    width: 70%;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: $dark-color;
+    padding-bottom: 5px;
+    border-bottom: 1px solid lighten($dark-color, 50%);
+  }
+
+  &__button {
+    width: 100px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: $light-color;
+    cursor: pointer;
+    box-shadow: 0 2px 2px lighten($dark-color, 50%);
+    font-weight: bold;
+    color: $dark-color;
+
+    &:hover {
+      background-color: darken($light-color, 1%);
+    }
+
+    &:active {
+      background-color: darken($light-color, 1%);
+      box-shadow: 0 0px 2px lighten($dark-color, 50%);
+    }
+  }
+}
+
