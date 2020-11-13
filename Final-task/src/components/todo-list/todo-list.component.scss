@@ -1,0 +1,22 @@
+.open-todo-list, .done-todo-list {
+  &__title {
+    margin-top: 50px;
+    font-weight: 400;
+  }
+
+  &__clear-button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__clear-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    font-weight: bold;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: underline;
+  }
+}
