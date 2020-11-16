@@ -2,11 +2,17 @@ import "./todo-list.component.scss";
 import { TodoItemComponent } from "../todo-item/todo-item.component";
 import { sortTodo } from "../../helpers";
 
-const searchOptions = [
+const sortOptions = [
   "Text (Asc)",
   "Text (Desk)",
   "Date creation (Asc)",
   "Date creation (Desk)",
+];
+
+const doneSortOptions = [
+  ...sortOptions,
+  "Date complete (Asc)",
+  "Date complete (Desk)",
 ];
 
 export const TodoListComponent = (todoItems, title, selectedSortingOption) =>
@@ -20,7 +26,7 @@ export const TodoListComponent = (todoItems, title, selectedSortingOption) =>
       value="Date creation (Asc)" 
       onchange="selectedSortingOptions['${title.toLowerCase()}'] = this.value; updateView();" 
     >
-      ${searchOptions
+      ${(title === "Done" ? doneSortOptions : sortOptions)
         .map(
           (option) =>
             `<option ${

@@ -1,12 +1,20 @@
 import { tranformDate } from "../helpers/tranformDate.helper";
 
 export class TodoItem {
-  constructor(name, isDone, creationDate, dateValue, closingDate) {
+  constructor(
+    name,
+    isDone,
+    creationDate,
+    creationDateValue,
+    closingDate,
+    closingDateValue
+  ) {
     this.name = name;
     this.isDone = isDone || false;
     this.creationDate = creationDate || tranformDate(new Date());
-    this.dateValue = dateValue || Date.now();
+    this.creationDateValue = creationDateValue || Date.now();
     this.closingDate = closingDate || null;
+    this.closingDateValue = closingDateValue || Date.now();
     this.isEditMode = false;
   }
 

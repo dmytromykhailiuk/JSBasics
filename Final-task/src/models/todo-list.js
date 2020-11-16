@@ -1,3 +1,5 @@
+import { TodoItem } from "./todo-item";
+
 export class TodoList {
   constructor(todoItems = []) {
     this.todoItems = todoItems;
@@ -36,6 +38,15 @@ export class TodoList {
       this.todoInEditMode.isEditMode = false;
       this.todoInEditMode = null;
     }
+  }
+
+  replaceTodoByMessage(message) {
+    this.deleteTodoByMessage(message);
+    this.addTodo(new TodoItem(message));
+  }
+
+  has(message) {
+    return !!this.todoItems.find((todo) => todo.name === message);
   }
 
   deleteListByFlag(flag) {

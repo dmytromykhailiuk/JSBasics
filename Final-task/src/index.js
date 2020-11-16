@@ -32,19 +32,28 @@ storage.getData((todoItems) =>
         todo.name,
         todo.isDone,
         todo.creationDate,
-        todo.dateValue,
-        todo.closingDate
+        todo.creationDateValue,
+        todo.closingDate,
+        todo.closingDateValue
       )
     )
   )
 );
 
 const addTodo = () => {
-  if (newTaskInput.value.trim()) {
-    todoList.addTodo(new TodoItem(newTaskInput.value.trim()));
-    newTaskInput.value = "";
-    updateView();
+  const inputValue = newTaskInput.value.trim();
+  if (!inputValue) {
+    return;
   }
+  if (todoList.has(inputValue)) {
+    if (confirm(`You've "${inputValue}" TODO. Do you want to replace it?`)) {
+      todoList.replaceTodoByMessage(inputValue);
+    }
+  } else {
+    todoList.addTodo(new TodoItem(inputValue));
+  }
+  newTaskInput.value = "";
+  updateView();
 };
 
 window.updateView = () => {
