@@ -1,13 +1,19 @@
 import { searchInTodoList } from "../../helpers";
 import { TodoListComponent } from "../todo-list/todo-list.component";
 
-export const TodoAppComponent = (todoList, searchingValue) => `
+export const TodoAppComponent = (
+  todoList,
+  searchingValue,
+  selectedSortingOptions
+) => `
   ${TodoListComponent(
     searchInTodoList(todoList.openedTodoItems, searchingValue),
-    "Open"
+    "Open",
+    selectedSortingOptions.open
   )}
   ${TodoListComponent(
     searchInTodoList(todoList.closedTodoItems, searchingValue),
-    "Done"
+    "Done",
+    selectedSortingOptions.done
   )}
 `;

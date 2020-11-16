@@ -12,20 +12,29 @@ import { TodoAppComponent } from "./components";
 window.callEventHandlers = callEventHandlers;
 window.enterPresed = enterPresed;
 window.escapePresed = escapePresed;
+window.todoList = new TodoList();
+window.selectedSortingOptions = {
+  open: "Date creation (Asc)",
+  done: "Text (Desk)",
+};
 
 const searchingInput = document.querySelector(".header__searching-input");
 const newTaskInput = document.querySelector(".create-task-section__input");
 const newTaskButton = document.querySelector(".create-task-section__button");
 const root = document.getElementById("root");
 
-window.todoList = new TodoList();
-
 const storage = new TodoStorage("todoItems", todoList);
 
 storage.getData((todoItems) =>
   todoItems.forEach((todo) =>
     todoList.addTodo(
-      new TodoItem(todo.name, todo.isDone, todo.creationDate, todo.closingDate)
+      new TodoItem(
+        todo.name,
+        todo.isDone,
+        todo.creationDate,
+        todo.dateValue,
+        todo.closingDate
+      )
     )
   )
 );
@@ -40,7 +49,11 @@ const addTodo = () => {
 
 window.updateView = () => {
   storage.saveData();
-  root.innerHTML = TodoAppComponent(todoList, searchingInput.value);
+  root.innerHTML = TodoAppComponent(
+    todoList,
+    searchingInput.value,
+    selectedSortingOptions
+  );
   focusOnTodoInput();
 };
 
