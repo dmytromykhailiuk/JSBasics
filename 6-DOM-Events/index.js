@@ -313,7 +313,7 @@ const startEditField = (index, fieldType) => {
   if (!currentRow.isEditMode) {
     closeEditMode();
     currentRow.isEditMode = true;
-    currentRow.node.innerHTML = `<input placeholder="Enter text..."/>`;
+    currentRow.node.innerHTML = `<input value="${currentRow.value}" placeholder="Enter text..."/>`;
     currentRow.input = currentRow.node.firstElementChild;
     currentRow.input.focus();
     currentFieldInEditMode = { index, fieldType };
