@@ -85,11 +85,11 @@ let autoSetNextImageTimeout;
 
 const runAutoSetNextImage = () => {
   autoSetNextImageTimeout = setTimeout(() => {
-    setNextImage(ChangeImageCommands.Right);
+    setNextImage(ChangeImageCommands.Right, true);
   }, timerValue * 1000);
 };
 
-const setNextImage = (command) => {
+const setNextImage = (command, shouldRunAutoSetNextImage) => {
   if (images.length < 2) {
     return;
   }
@@ -116,7 +116,9 @@ const setNextImage = (command) => {
 
   showImage(images[selectedImageIndex]);
 
-  runAutoSetNextImage();
+  if (shouldRunAutoSetNextImage) {
+    runAutoSetNextImage();
+  }
 };
 
 const changeTimerValue = (command) => {
@@ -133,6 +135,8 @@ const changeTimerValue = (command) => {
       break;
     default:
   }
+  clearTimeout(autoSetNextImageTimeout);
+  runAutoSetNextImage();
 };
 
 const deleteImage = () => {
@@ -221,13 +225,12 @@ const createRow = (firstname, lastname) => {
   const tr = document.createElement("tr");
   tr.id = `row-${lastId}`;
   tr.innerHTML = `
-    <td 
-      class="row-field" 
-      id=row-firstname-${lastId}>${firstname || ""}
+    <td><p class="row-field" id=row-firstname-${lastId}>${firstname || ""}</p>
     </td>
-    <td 
-      class="row-field second" 
-      id=row-lastname-${lastId}>${lastname || ""}</td>
+    <td><p class="row-field second" id=row-lastname-${lastId}>${
+    lastname || ""
+  }</p>
+    </td>
     <td 
       width="40px"
       class="delete-row-button"

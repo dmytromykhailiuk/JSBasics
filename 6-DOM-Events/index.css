@@ -169,3 +169,11 @@ tr, td {
   width: 100%;
   margin: 10px;
 }
+
+.row-field{
+  margin: 0;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  min-width: 30px;
+}
